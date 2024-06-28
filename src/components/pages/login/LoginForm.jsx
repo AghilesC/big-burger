@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { IoChevronForward } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
-import Input from "./Input";
+import PrimaryButton from "../../reusable-ui/PrimaryButton";
+import TextInput from "../../reusable-ui/TextInput";
 
 export default function LoginForm() {
   const [inputValue, setInputValue] = useState("");
@@ -24,17 +25,18 @@ export default function LoginForm() {
         <hr />
         <h2>Connectez-vous</h2>
       </div>
-      <Input
+      <TextInput
         value={inputValue}
         onChange={handleChange}
         placeholder="Entrez votre prénom"
         Icon={<BsPersonCircle className="icon" />}
         required
       />
-      <button className="button-with-icon" type="submit">
-        <span>Accédez à votre espace</span>
-        <IoChevronForward />
-      </button>
+
+      <PrimaryButton
+        label={"Accédez à votre espace"}
+        Icon={<IoChevronForward className="icon" />}
+      ></PrimaryButton>
     </LoginFormStyled>
   );
 }
@@ -74,49 +76,11 @@ const LoginFormStyled = styled.form`
     margin: 18px 0;
   }
 
-  .button-with-icon {
-    width: 100%;
-    border: 1px solid red;
-    display: inline-flex;
+  .icon {
+    display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    white-space: nowrap;
-    text-decoration: none;
-    line-height: 1;
-
-    padding: 18px 24px;
-    border-radius: 5px;
     font-size: 15px;
-    font-weight: 800;
-    color: white;
-    background-color: #ff9f1b;
-    border: 1px solid #ff9f1b;
-
-    &:hover:not(:disabled) {
-      background-color: white;
-      color: #ff9f1b;
-      border: 1px solid #ff9f1b;
-      transition: all200ms ease-out;
-    }
-
-    &:active {
-      color: white;
-      background-color: #ff9f1b;
-      border: 1px solid #ff9f1b;
-    }
-
-    &:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 15px;
-      margin-left: 10px;
-    }
+    margin-left: 10px;
   }
 `;
