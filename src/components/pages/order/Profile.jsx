@@ -30,7 +30,7 @@ const ProfileStyled = styled.div`
   min-width: 100px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  margin-top: 25px;
+
   .info {
     text-align: right;
     margin-right: 10px;

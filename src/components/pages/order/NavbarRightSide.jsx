@@ -10,4 +10,8 @@ export default function NavbarRightSide({ username }) {
   );
 }
 
-const NavbarRightSideStyled = styled.nav``;
+const NavbarRightSideStyled = styled.nav`
+  display: flex;
+  align-items: center;
+  padding-right: 50px;
+`;
