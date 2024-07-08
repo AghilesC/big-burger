@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { theme } from "../theme";
 
-export default function Logo() {
+export default function Logo({ className, onClick }) {
   return (
-    <LogoStyled>
+    <LogoStyled className={className} onClick={onClick}>
       <h1>BIIIIG</h1>
       <img src="/images/logo-orange.png" alt="" />
       <h1>BURGER</h1>
@@ -15,7 +15,6 @@ export default function Logo() {
 const LogoStyled = styled.div`
   display: flex;
   align-items: center;
-  transform: scale(2.5);
 
   h1 {
     display: inline;
