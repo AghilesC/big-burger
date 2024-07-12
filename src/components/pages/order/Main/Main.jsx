@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { theme } from "../../../theme";
+import Basket from "./Basket";
+import Menu from "./Menu";
 
 export default function Main() {
   return (
     <MainStyled>
-      <div className="basket">Basket</div>
-      <div className="menu">Menu</div>
+      {/* <Basket /> */}
+      <Menu />
     </MainStyled>
   );
 }
@@ -18,13 +20,5 @@ const MainStyled = styled.div`
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   display: grid;
-  grid-template-columns: 25% 75%;
-
-  .basket {
-    background: purple;
-  }
-
-  .menu {
-    background: green;
-  }
+  grid-template-columns: 100%;
 `;
