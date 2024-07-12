@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import NavbarRightSide from "./NavbarRightSide";
 import NavbarLeftSide from "./NavbarLeftSide";
-import Logo from "../../reusable-ui/Logo";
-import { theme } from "../../theme";
-import { refreshPage } from "../../../utils/window";
+import Logo from "../../../reusable-ui/Logo";
+import { theme } from "../../../theme";
+import { refreshPage } from "../../../../utils/window";
 
 export default function Navbar({ username }) {
   return (
