@@ -29,21 +29,4 @@ const MenuStyled = styled.div`
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
   justify-items: center;
-  .produit {
-    background: red;
-    width: 240px;
-    height: 330px;
-  }
-  .image {
-    border: 1px solid fuchsia;
-    width: 100px;
-    height: auto;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-  .description {
-    border: 1px solid fuchsia;
-  }
 `;
