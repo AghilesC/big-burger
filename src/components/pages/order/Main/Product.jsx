@@ -9,10 +9,8 @@ export default function Product({ title, imageSource, price }) {
       <div className="info-text">
         <div className="title">{title}</div>
         <div className="description">
-          {price}
-
-          <div className="price"></div>
-          <button>Ajouter</button>
+          <div className="price"> {price}</div>
+          <button className="add-button">Ajouter</button>
         </div>
       </div>
     </ProductStyled>
@@ -29,7 +27,7 @@ const ProductStyled = styled.div`
   padding-bottom: 10px;
 
   .image {
-    border: 1px solid fuchsia;
+    border: 1px solid yellow;
     width: 100%;
     height: auto;
     margin-top: 30px;
@@ -39,7 +37,18 @@ const ProductStyled = styled.div`
       object-fit: contain;
     }
   }
-  .description {
-    border: 1px solid fuchsia;
+
+  .info-text {
+    border: 3px solid fuchsia;
+    display: grid;
+    .description {
+      border: 1px solid darkblue;
+      .price {
+        border: 1px solid blue;
+      }
+      .add-button {
+        border: 3px solid green;
+      }
+    }
   }
 `;
