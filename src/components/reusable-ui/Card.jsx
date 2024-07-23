@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { theme } from "../../../theme";
-import PrimaryButton from "../../..//reusable-ui/PrimaryButton";
+import { theme } from "../theme";
+import PrimaryButton from "./PrimaryButton";
 
-export default function Product({ title, imageSource, leftDescription }) {
+export default function Card({ title, imageSource, leftDescription }) {
   return (
-    <ProductStyled>
+    <CardStyled>
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
@@ -18,11 +18,11 @@ export default function Product({ title, imageSource, leftDescription }) {
           </div>
         </div>
       </div>
-    </ProductStyled>
+    </CardStyled>
   );
 }
 
-const ProductStyled = styled.div`
+const CardStyled = styled.div`
   background: ${theme.colors.white};
   width: 200px;
   height: 300px;
@@ -72,6 +72,7 @@ const ProductStyled = styled.div`
 
       .left-description {
         display: flex;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         justify-content: flex-start;
         align-items: center;
         font-weight: ${theme.fonts.medium};
