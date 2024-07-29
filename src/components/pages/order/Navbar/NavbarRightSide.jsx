@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { theme } from "../../../theme";
 
 export default function NavbarRightSide({ username }) {
-  const [isModeAdmin, setisModeAdmin] = useState(false);
+  const [isModeAdmin, setisModeAdmin] = useState(true);
 
   const displayToastNotification = () => {
     if (!isModeAdmin) {
@@ -29,6 +29,7 @@ export default function NavbarRightSide({ username }) {
   return (
     <NavbarRightSideStyled>
       <ToggleButton
+        isChecked={isModeAdmin}
         onToggle={displayToastNotification}
         labelIfChecked="Désactiver le mode admin"
         labelIfUnchecked="Activer le mode admin"
