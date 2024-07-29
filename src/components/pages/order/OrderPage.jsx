@@ -3,17 +3,27 @@ import styled from "styled-components";
 import { theme } from "../../theme";
 import NavbarLeftSide from "./Navbar/Navbar";
 import Main from "./Main/Main";
+import { useState } from "react";
+import OrderContext from "../../../context/OrderContext.jsx";
 
 export default function OrderPage() {
   const { username } = useParams();
+  const [isModeAdmin, setisModeAdmin] = useState(true);
+
+  const orderContextValue = {
+    isModeAdmin,
+    setisModeAdmin,
+  };
 
   return (
-    <OrderPageStyled>
-      <div className="container">
-        <NavbarLeftSide username={username} />
-        <Main />
-      </div>
-    </OrderPageStyled>
+    <OrderContext.Provider value={orderContextValue}>
+      <OrderPageStyled>
+        <div className="container">
+          <NavbarLeftSide username={username} />
+          <Main />
+        </div>
+      </OrderPageStyled>
+    </OrderContext.Provider>
   );
 }
 
