@@ -3,14 +3,15 @@ import styled from "styled-components";
 import { theme } from "../../../theme";
 import Basket from "./Basket";
 import Menu from "./Menu";
+import Admin from "./Admin/Admin";
 
 export default function Main() {
   return (
     <MainStyled>
       {/* <Basket /> */}
       <div className="menu-and-admin">
+        <Admin />
         <Menu />
-        <div className="admin">admin</div>
       </div>
     </MainStyled>
   );
