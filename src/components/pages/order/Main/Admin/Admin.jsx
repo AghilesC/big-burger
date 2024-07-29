@@ -6,9 +6,8 @@ export default function Admin() {
 }
 
 const AdminStyled = styled.div`
-  height: 25px;
-  position: absolute;
   height: 250px;
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
