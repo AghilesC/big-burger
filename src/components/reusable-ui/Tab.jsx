@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { theme } from "../theme";
-export default function Tab({ Icon, onClick, className }) {
+export default function Tab({ Icon, onClick, className, label }) {
   return (
     <TabStyled onClick={onClick} className={className}>
       {Icon && Icon}
+      {label && <span className="label">{label}</span>}
     </TabStyled>
   );
 }
@@ -33,5 +34,9 @@ const TabStyled = styled.button`
   border-radius: 5px 5px 0px 0px;
   &:hover {
     border-bottom: 2px solid ${theme.colors.white};
+  }
+
+  .label {
+    margin-left: 13px;
   }
 `;
