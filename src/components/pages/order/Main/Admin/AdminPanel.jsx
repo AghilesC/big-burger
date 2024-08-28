@@ -2,7 +2,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../context/OrderContext";
 import { theme } from "../../../../theme";
-import { getTabSelected, tabsConfig } from "./tabsConfig";
+import { tabsConfig, getTabSelected } from "./tabsConfig";
 
 export default function AdminPanel() {
   const { currentTabSelected } = useContext(OrderContext);
@@ -10,20 +10,14 @@ export default function AdminPanel() {
   const tabs = tabsConfig;
   const tabSelected = getTabSelected(tabs, currentTabSelected);
 
-  return (
-    <AdminPanelStyled>
-      <p>{tabSelected && tabSelected.label}</p>
-    </AdminPanelStyled>
-  );
+  return <AdminPanelStyled>{tabSelected.label}</AdminPanelStyled>;
 }
 
 const AdminPanelStyled = styled.div`
-  height: 250px;
+  height: 251px;
+  border-bottom-left-radius: ${theme.borderRadius.extraRound};
+  border-bottom-right-radius: ${theme.borderRadius.extraRound};
   background: ${theme.colors.white};
-  border: 1px solid ${theme.colors.greyLight};
+  border-top: 1px solid ${theme.colors.greyLight};
   box-shadow: ${theme.shadows.subtle};
-
-  p {
-    padding: 0 20px;
-  }
 `;
