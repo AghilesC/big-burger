@@ -1,25 +1,33 @@
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import styled from "styled-components";
 import { theme } from "../../theme";
-import NavbarLeftSide from "./Navbar/Navbar";
 import Main from "./Main/Main";
-import { useState } from "react";
-import OrderContext from "../../../context/OrderContext.jsx";
+import Navbar from "./Navbar/Navbar";
+import OrderContext from "../../../context/OrderContext";
 
 export default function OrderPage() {
-  const { username } = useParams();
-  const [isModeAdmin, setisModeAdmin] = useState(true);
+  // state
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [currentTabSelected, setCurrentTabSelected] = useState("add");
+
+  // comportements
 
   const orderContextValue = {
     isModeAdmin,
-    setisModeAdmin,
+    setIsModeAdmin,
+    isCollapsed,
+    setIsCollapsed,
+    currentTabSelected,
+    setCurrentTabSelected,
   };
 
+  //affichage
   return (
     <OrderContext.Provider value={orderContextValue}>
       <OrderPageStyled>
         <div className="container">
-          <NavbarLeftSide username={username} />
+          <Navbar />
           <Main />
         </div>
       </OrderPageStyled>
@@ -28,21 +36,18 @@ export default function OrderPage() {
 }
 
 const OrderPageStyled = styled.div`
-  background-color: ${theme.colors.primary};
-  height: 98.3vh;
+  background: ${theme.colors.primary};
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
   .container {
-    border-top-left-radius: ${theme.borderRadius.extraRound};
-    border-top-right-radius: ${theme.borderRadius.extraRound};
-    border-bottom-left-radius: ${theme.borderRadius.extraRound};
-    border-bottom-right-radius: ${theme.borderRadius.extraRound};
-    background-color: red;
+    background: red;
     height: 95vh;
     width: 1400px;
     display: flex;
     flex-direction: column;
+    border-radius: ${theme.borderRadius.extraRound};
   }
 `;

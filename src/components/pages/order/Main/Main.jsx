@@ -1,16 +1,16 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
+import OrderContext from "../../../../context/OrderContext";
 import { theme } from "../../../theme";
-import Basket from "./Basket";
-import Menu from "./Menu";
 import Admin from "./Admin/Admin";
-import OrderContext from "../../../../context/OrderContext.jsx";
+import Menu from "./Menu";
 
 export default function Main() {
-  const { isModeAdmin, setisModeAdmin } = useContext(OrderContext);
+  const { isModeAdmin } = useContext(OrderContext);
+
   return (
     <MainStyled>
-      {/* <Basket /> */}
+      {/* <div className="basket">Basket</div> */}
       <div className="menu-and-admin">
         <Menu />
         {isModeAdmin && <Admin />}
@@ -29,6 +29,10 @@ const MainStyled = styled.div`
 
   display: grid;
   grid-template-columns: 1fr;
+
+  /* .basket {
+    background: pink;
+  } */
 
   .menu-and-admin {
     position: relative;

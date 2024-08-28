@@ -1,33 +1,57 @@
 import styled from "styled-components";
 import Tab from "../../../../reusable-ui/Tab";
-import { RxChevronUp, RxChevronDown } from "react-icons/rx";
-import { AiOutlinePlus } from "react-icons/ai";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { theme } from "../../../../theme";
-export default function AdminTabs({ isCollapsed, setIsCollapsed }) {
-  const handleClick = () => {
-    setIsCollapsed(!isCollapsed);
+import { useContext } from "react";
+import OrderContext from "../../../../../context/OrderContext";
+import { getTabsConfig } from "./tabsConfig";
+
+export default function AdminTabs() {
+  // state
+  const {
+    isCollapsed,
+    setIsCollapsed,
+    currentTabSelected,
+    setCurrentTabSelected,
+  } = useContext(OrderContext);
+
+  // comportements
+  const selectTab = (tabSelected) => {
+    setIsCollapsed(false); // tu m'ouvres le pannel
+    setCurrentTabSelected(tabSelected);
   };
 
+  const tabs = getTabsConfig(currentTabSelected, selectTab);
+
+  // affichage
   return (
     <AdminTabsStyled>
       <Tab
-        Icon={isCollapsed ? <RxChevronDown /> : <RxChevronUp />}
-        onClick={handleClick}
-        className={isCollapsed ? "" : "is-active"}
+        index="chevron"
+        label=""
+        Icon={isCollapsed ? <FiChevronUp /> : <FiChevronDown />}
+        onClick={() => setIsCollapsed(!isCollapsed)}
+        className={isCollapsed ? "is-active" : ""}
       />
-      <Tab
-        label={"Ajouter un produit"}
-        Icon={<AiOutlinePlus />}
-        onClick={handleClick}
-        className={isCollapsed ? "" : "is-active"}
-      />
+      {tabs.map((tab) => (
+        <Tab
+          key={tab.index}
+          index={tab.index}
+          label={tab.label}
+          Icon={tab.Icon}
+          onClick={tab.onClick}
+          className={tab.className}
+        />
+      ))}
     </AdminTabsStyled>
   );
 }
 
 const AdminTabsStyled = styled.div`
   display: flex;
-  padding: 0 20px;
+  position: absolute;
+  top: -43px;
+  left: 5%;
 
   .is-active {
     background: ${theme.colors.background_dark};
