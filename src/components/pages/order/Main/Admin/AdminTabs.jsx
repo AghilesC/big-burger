@@ -4,10 +4,9 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { theme } from "../../../../theme";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
-import { getTabsConfig } from "./tabsConfig";
+import { tabsConfig } from "./tabsConfig";
 
 export default function AdminTabs() {
-  // state
   const {
     isCollapsed,
     setIsCollapsed,
@@ -15,15 +14,13 @@ export default function AdminTabs() {
     setCurrentTabSelected,
   } = useContext(OrderContext);
 
-  // comportements
   const selectTab = (tabSelected) => {
-    setIsCollapsed(false); // tu m'ouvres le pannel
+    setIsCollapsed(false);
     setCurrentTabSelected(tabSelected);
   };
 
-  const tabs = getTabsConfig(currentTabSelected, selectTab);
+  const tabs = tabsConfig;
 
-  // affichage
   return (
     <AdminTabsStyled>
       <Tab
@@ -39,8 +36,8 @@ export default function AdminTabs() {
           index={tab.index}
           label={tab.label}
           Icon={tab.Icon}
-          onClick={tab.onClick}
-          className={tab.className}
+          onClick={() => selectTab(tab.index)}
+          className={currentTabSelected === tab.index ? "is-active" : ""}
         />
       ))}
     </AdminTabsStyled>
